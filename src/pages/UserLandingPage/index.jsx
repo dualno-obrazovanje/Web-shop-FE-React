@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Heading from '../../modules/Heading';
-import Hero from '../../modules/Hero';
-import Products from '../../modules/Products';
-import Footer from '../../modules/Footer';
+import Heading from '../../components/Heading';
+import Hero from '../../components/Hero';
+import Products from '../../features/Products';
+import Footer from '../../components/Footer';
 import './style.scss';
 
 const UserLandingPage = () => {

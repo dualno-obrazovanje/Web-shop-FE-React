@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ControlCameraIcon from '@mui/icons-material/ControlCamera';
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import CustomHeadingIcon from "src/shared/CustomHeadingIcon";
+import CustomHeadingIcon from "../../shared/CustomHeadingIcon";
 import { Link } from "react-router-dom";
 import Cart from "../Cart";
 import './style.css';
