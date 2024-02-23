@@ -1,0 +1,10 @@
+.ws-hero-container {
+  display: flex;
+  margin: 125px 230px;
+}
+
+.ws-hero-img-container {
+  background-color: rgb(255, 255, 255);
+  height: 450px;
+  width: 600px;
+}

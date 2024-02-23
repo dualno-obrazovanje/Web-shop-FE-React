@@ -1,0 +1,16 @@
+.ws-product-manipulation-container {
+  margin-bottom: 35px;
+  p.manipulation-link {
+    cursor: pointer;
+    margin-right: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #777777;
+    &:hover {
+      color: black;
+    }
+    &.active-link {
+      color: black;
+    }
+  }
+}

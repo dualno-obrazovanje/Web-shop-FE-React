@@ -1,0 +1,29 @@
+.ws-product-manipulation-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  div:first-child {
+    display: flex;
+  }
+}
+
+.ws-product-filter-container {
+  display: flex;
+  align-items: center ;
+  justify-content: space-between;
+  margin-bottom: 35px;
+
+  div:first-child {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+button.ws-action-button {
+  background-color: #1E2832;
+  
+  &:hover {
+    background-color: #1E2832;
+  }
+}
