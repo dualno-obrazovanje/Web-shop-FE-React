@@ -6,7 +6,7 @@ import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import AdminLandingPage from './pages/AdminLandingPage';
 import UserLandingPage from './pages/UserLandingPage';
-import { StateContext } from './state/StateContext';
+import { StateProvider } from './state/StateContext';
 
 
 const router = createBrowserRouter([
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/landing/admin",
-    element: <AdminLandingPage />,
+    element: React.lazy(() => import('./pages/AdminLandingPage')),
   },
   {
     path: "/landing",
@@ -43,8 +43,11 @@ const store = {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <StateContext.Provider value={store}>
+
+    <StateProvider>
       <RouterProvider router={router} />
-    </StateContext.Provider>
+    </StateProvider>
+
+    
   </React.StrictMode>
 );

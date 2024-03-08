@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductsGrid from './ProductsGrid';
 import ProductManipulation from "./ProductManipulation";
 import { mockedProductData } from "./mockedProductData";
-import { StateContext } from "../../state/StateContext";
 import './style.scss';
 
 const Products = ({ cart, setCart, products, setProducts }) => {
   const [displayProducts, setDisplayProducts] = useState(mockedProductData);
   const [categories, setCategories] = useState([]);
-  const state = useContext(StateContext);
-  console.log(state);
 
   useEffect(() => {
     // place for backend call

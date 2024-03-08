@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import './style.scss'
+import { StateContext } from "../../../../state/StateContext";
 
 const ProductCard = ({ img, productName, productType, price, lager, products, setProducts, cart, setCart }) => {
   const [isHovering, setIsHovering] = useState(false);
+  const {addProduct: stateAddProduct, products: stateProducts} = useContext(StateContext);
 
   const handleMouseOver = () => {
-    setIsHovering(true)
+    setIsHovering(true);
   };
 
   const handleMouseOut = () => {
-    setIsHovering(false)
+    setIsHovering(false);
+  };
+
+  const AddProduct = () => {
+    stateAddProduct({test: 'test'});
+    console.log(stateProducts);
   };
 
   const handleAddToCart = () => {
+    AddProduct();
     setProducts(products.map(product => {
       if (productName === product.name && productType === product.type) {
         return ({
