@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import './style.scss'
-import { StateContext } from "../../../../state/StateContext";
+import { StateContext } from "../../../../../state/StateContext";
 
 const ProductCard = ({ img, productName, productType, price, lager, products, setProducts, cart, setCart }) => {
   const [isHovering, setIsHovering] = useState(false);

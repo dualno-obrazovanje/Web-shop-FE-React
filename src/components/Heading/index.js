@@ -9,12 +9,11 @@ import { Link } from "react-router-dom";
 import Cart from "../Cart";
 import './style.css';
 
-const Heading = ({ setModal, cart, handleModalOpening }) => {
+const Heading = ({ setModal }) => {
   const openCartModal = () => {
     setModal(
       <Cart 
-        cartItems={cart} 
-        handleModalOpening={handleModalOpening} 
+        handleModalOpening={setModal} 
       />
     );
   }

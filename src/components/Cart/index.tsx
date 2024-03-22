@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductTile from "./ProductTile";
 import { Button } from "@mui/material";
-import "./style.scss"
+import "./style.scss";
+import { StateContext } from "../../state/StateContext";
 
-const Cart = ({ cartItems, handleModalOpening }) => {
+const Cart = ({ handleModalOpening }: { handleModalOpening: unknown }) => {
+  const { cart: cartItems } = useContext(StateContext);
+
   const handleClick = () => {
     /*
       spremiti backend axios call
@@ -11,7 +14,7 @@ const Cart = ({ cartItems, handleModalOpening }) => {
           ...cartItems
         }})
     */
-   console.log('handled backend call');
+    console.log("handled backend call");
   };
 
   return (
@@ -19,21 +22,23 @@ const Cart = ({ cartItems, handleModalOpening }) => {
       <div className="flex-container">
         <div className="flex-child-list-of-products">
           <div className="ws-cart-modal-exit">
-            <p onClick={() => handleModalOpening(null)}>
+            <p onClick={() => handleModalOpening(undefined)}>
               {`< Continue Shoping`}
             </p>
           </div>
           <div className="ws-cart-modal-header-description">
             <p>{`Shopping cart`}</p>
-            <p>{`you have ${cartItems.length} ${cartItems.length > 1 ? 'items' : 'item'} in your cart`}</p>
+            <p>{`you have ${cartItems.length} ${cartItems.length > 1 ? "items" : "item"} in your cart`}</p>
           </div>
           <div className="ws-cart-modal-added-products-container">
-            {cartItems.map((item) =>
+            {cartItems.map((item) => (
               <ProductTile product={item} />
-            )}
+            ))}
           </div>
           <div className="buy-button-container">
-            <Button variant="outlined" onClick={handleClick}>Buy now</Button>
+            <Button variant="outlined" onClick={handleClick}>
+              Buy now
+            </Button>
           </div>
         </div>
         <div className="flex-child-card-details">
@@ -43,7 +48,6 @@ const Cart = ({ cartItems, handleModalOpening }) => {
           <div></div>
         </div>
       </div>
-
     </div>
   );
 };

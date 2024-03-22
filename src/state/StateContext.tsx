@@ -1,23 +1,16 @@
 import React, { ReactElement } from "react";
 import { createContext, useState } from "react";
-import {useNavigate, NavigateFunction} from 'react-router-dom';
-import { Product, ComponentProps } from "./types";
+import { ComponentProps, ContextType } from "./types";
+import { Product } from "../features/Products/types";
 
-export const StateContext = createContext({});
+export const StateContext = createContext<ContextType>({} as ContextType);
 
 export const StateProvider = ({children}: ComponentProps): ReactElement => {
   const [products, setProducts] = useState<Product[]>([]);
-
-  const addProduct = (newProduct: Product) => {
-    setProducts([...products, newProduct]);
-  }
-
-  const addProductAtFirstPlace = (newProduct: Product) => {
-    setProducts([newProduct, ...products]);
-  }
+  const [cart, setCart] = useState<Product[]>([]);
 
   return(
-    <StateContext.Provider value={{products, addProduct, addProductAtFirstPlace}}>
+    <StateContext.Provider value={{products, setProducts, cart, setCart}}>
       {children}
     </StateContext.Provider>
   );

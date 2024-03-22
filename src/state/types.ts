@@ -1,16 +1,13 @@
-export type Product = {
-  name: string,
-  type: ProductType,
-  price: number,
-  lager: number,
-}
+import { Dispatch, SetStateAction } from "react";
+import { Product } from "../features/Products/types";
 
-export enum ProductType {
-  COMPUTER = 'COMPUTER',
-  PHONE = 'PHONE',
-  SPORT = 'SPORT'
-}
+export type ContextType = {
+  products: Product[];
+  setProducts: Dispatch<SetStateAction<Product[]>>;
+  cart: Product[];
+  setCart: Dispatch<SetStateAction<Product[]>>;
+};
 
 export type ComponentProps = {
-  children: JSX.Element
-}
+  children: JSX.Element;
+};
