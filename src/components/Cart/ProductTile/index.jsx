@@ -9,7 +9,6 @@ const ProductTile = ({ product }) => {
   return (
     <div className="ws-product-tile-container">
       <div className="tile-image-container">
-      <img src={product.img} alt="" />
       </div>
       <div className="tile-title">
       <div>{product.name}</div>

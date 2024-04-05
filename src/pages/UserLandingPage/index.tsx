@@ -8,7 +8,6 @@ import { StateContext } from '../../state/StateContext';
 
 const UserLandingPage = (): ReactElement => {
   const [modalContent, setModalContent] = useState<JSX.Element | undefined>(undefined);
-  const {cart, setCart, products, setProducts} = useContext(StateContext);
 
   const handleModalOpening = (content: JSX.Element) => {
     setModalContent(content);
@@ -20,7 +19,7 @@ const UserLandingPage = (): ReactElement => {
         setModal={handleModalOpening}
       />
       <Hero />
-      <Products cart={cart} setCart={setCart} products={products} setProducts={setProducts} />
+      <Products />
       <Footer />
       {
         modalContent && (

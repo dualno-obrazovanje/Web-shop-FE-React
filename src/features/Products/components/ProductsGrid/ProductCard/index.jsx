@@ -4,86 +4,53 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
-import './style.scss'
+import "./style.scss";
 import { StateContext } from "../../../../../state/StateContext";
+import img from "../../../../../resources/product.png";
 
-const ProductCard = ({ img, productName, productType, price, lager, products, setProducts, cart, setCart }) => {
-  const [isHovering, setIsHovering] = useState(false);
-  const {addProduct: stateAddProduct, products: stateProducts} = useContext(StateContext);
+const ProductCard = ({ product }) => {
+  const { handleAddToCart } = useContext(StateContext);
 
-  const handleMouseOver = () => {
-    setIsHovering(true);
+  console.log(product.lager);
+
+  const onClickAddToCart = () => {
+    handleAddToCart(product.name, product.type, product.price);
   };
-
-  const handleMouseOut = () => {
-    setIsHovering(false);
-  };
-
-  const AddProduct = () => {
-    stateAddProduct({test: 'test'});
-    console.log(stateProducts);
-  };
-
-  const handleAddToCart = () => {
-    AddProduct();
-    setProducts(products.map(product => {
-      if (productName === product.name && productType === product.type) {
-        return ({
-          ...product,
-          lager: --lager,
-        });
-      }
-      return product;
-    }));
-
-    const isAlreadyAddedToCart = !!cart.find(cartItem => cartItem.name === productName && cartItem.type === productType);
-    if (isAlreadyAddedToCart) {
-      cart.map(cartItem => {
-        if (cartItem.name === productName && cartItem.type === productType) {
-          return ({
-            ...cartItem,
-            quantity: ++cartItem.quantity,
-          })
-        }
-        return cartItem;
-      })
-    } else {
-      cart.push({
-        img,
-        name: productName,
-        type: productType,
-        price,
-        quantity: 1,
-      })
-    }
-  }
 
   return (
-    <Card
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-      className="ws-product-card"
-    >
+    <Card className="ws-product-card">
       <CardMedia
         component="img"
+        sx={{ height: 140 }}
         image={img}
+        title="Product img"
       />
-      {isHovering &&
+      <CardContent className="ws-product-card-content">
         <div className="ws-product-card-hover-banner">
-          <Chip label={`${lager} left`} variant="outlined" color={lager > 0 ? 'info' : 'error'} />
-          <Button size="small" onClick={handleAddToCart} variant={lager > 0 ? 'outlined' : 'text'} disabled={lager > 0 ? false : true}>Add to cart</Button>
+          <Chip
+            label={`${product.lager} left`}
+            variant="outlined"
+            color={product.lager > 0 ? "info" : "error"}
+          />
         </div>
-      }
-      <CardContent>
-        <h5>{productName}</h5>
+        <h5>{product.name}</h5>
         <div className="ws-product-type-price">
-          <p>{productType}</p>
-          <p className="ws-product-price">{`$${price}`}</p>
+          <p>{product.type}</p>
+          <p className="ws-product-price">{`$${product.price}`}</p>
+        </div>
+        <div>
+          <Button
+            size="small"
+            onClick={onClickAddToCart}
+            variant={product.lager > 0 ? "outlined" : "text"}
+            disabled={product.lager > 0 ? false : true}
+          >
+            Add to cart
+          </Button>
         </div>
       </CardContent>
     </Card>
   );
-}
-
+};
 
 export default ProductCard;

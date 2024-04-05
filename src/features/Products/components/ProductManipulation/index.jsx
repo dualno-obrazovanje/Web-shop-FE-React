@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import ManipulationLink from "./ManipulationLink";
 import TextField from '@mui/material/TextField';
 import './style.scss';
-const ProductManipulation = ({ categories, setCategories, products, setDisplayProducts }) => {
+const ProductManipulation = ({ categories, setCategories, products }) => {
   const [showFilterOption, setShowFilterOption] = useState(false);
 
   const displayFilterManipulation = () => {
@@ -20,8 +20,7 @@ const ProductManipulation = ({ categories, setCategories, products, setDisplayPr
               label={category.label}
               categories={categories}
               setCategories={setCategories}
-              products={products}
-              setDisplayProducts={setDisplayProducts}              
+              products={products}         
             />)}
         </div>
         <Button variant="contained" className="ws-action-button" onClick={displayFilterManipulation}>Filter</Button>

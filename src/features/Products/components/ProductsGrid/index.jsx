@@ -1,21 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ProductCard from './ProductCard';
 import './style.scss';
+import { StateContext } from '../../../../state/StateContext';
 
-const ProductsGrid = ({ products, setProducts, cart, setCart }) => {
+const ProductsGrid = () => {
+    const {products} = useContext(StateContext);
+    
     return (
         <div className="gridProduct">
             {products.map((product) =>
                 <ProductCard
-                    products={products}
-                    setProducts={setProducts}
-                    cart={cart}
-                    setCart={setCart}
-                    img={product.img}
-                    lager={product.lager}
-                    price={product.price}
-                    productName={product.name}
-                    productType={product.type}
+                    product={product}
                 />
             )}
         </div>

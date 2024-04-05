@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductsGrid from './ProductsGrid';
 import ProductManipulation from "./ProductManipulation";
 import { mockedProductData } from "./mockedProductData";
 import './style.scss';
+import { StateContext } from "../../../state/StateContext";
 
-const Products = ({ cart, setCart, products, setProducts }) => {
-  const [displayProducts, setDisplayProducts] = useState(mockedProductData);
-  const [categories, setCategories] = useState([]);
+const Products = () => {
+  const {setCategories, setProducts} = useContext(StateContext);
 
   useEffect(() => {
     // place for backend call
@@ -36,13 +36,12 @@ const Products = ({ cart, setCart, products, setProducts }) => {
   return (
     <div className="ws-product-content-container">
       <h1>Products</h1>
-      <ProductManipulation
+      {/* <ProductManipulation
         categories={categories}
         setCategories={setCategories}
         products={products}
-        setDisplayProducts={setDisplayProducts}
-      />
-      <ProductsGrid products={displayProducts} setProducts={setDisplayProducts} cart={cart} setCart={setCart} />
+      /> */}
+      <ProductsGrid />
     </div>
   );
 }

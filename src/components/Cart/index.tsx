@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import "./style.scss";
 import { StateContext } from "../../state/StateContext";
 
-const Cart = ({ handleModalOpening }: { handleModalOpening: unknown }) => {
+const Cart = ({ handleModalOpening }: { handleModalOpening: (content: JSX.Element | undefined) => void }) => {
   const { cart: cartItems } = useContext(StateContext);
 
   const handleClick = () => {
